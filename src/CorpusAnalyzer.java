@@ -27,7 +27,7 @@ public class CorpusAnalyzer {
     public void printSortedTypeList(int cutOff) {
         ArrayList<Type> types = getSortedTypeList(texts);
         Logger.debug("Printing result list");
-        System.out.printf("Most frequent types used by Shakesoeare (Folger Corpus with %d plays, poems and sonets) \n", texts.size());
+        System.out.printf("Most frequent words used by Shakesoeare (Folger Corpus with %d plays, poems and sonets) \n", texts.size());
         System.out.printf("%5s | %-20s | %s \n", "Pos", "Type", "Frequency");
         for (int i = 0; i < cutOff; i++) {
             System.out.printf("%5d | %-20s | %d tokens \n", i + 1, types.get(i).value, types.get(i).getCount());
@@ -61,7 +61,7 @@ public class CorpusAnalyzer {
 
 
     public static void main(String[] args) {
-        Logger.setLogMode(LogMode.DEBUG);
+        Logger.setLogMode(LogMode.OFF);
         CorpusAnalyzer corpusAnalyzer = new CorpusAnalyzer();
         corpusAnalyzer.loadTexts();
         corpusAnalyzer.printSortedTypeList(AppConfig.OUTPUT_CUTOFF); // Limit output to 10 most frequent types

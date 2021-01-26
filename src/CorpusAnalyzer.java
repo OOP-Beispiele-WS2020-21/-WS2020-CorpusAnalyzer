@@ -20,7 +20,6 @@ public class CorpusAnalyzer {
     private ArrayList<Text> texts;
 
     public void loadTexts() {
-        Logger.setLogMode(LogMode.DEBUG);
         File textFileDirectory = new File(AppConfig.TEXT_FILE_DIRECTORY_PATH);
         texts = FolgerCorpusTextLoader.loadFrom(textFileDirectory);
     }

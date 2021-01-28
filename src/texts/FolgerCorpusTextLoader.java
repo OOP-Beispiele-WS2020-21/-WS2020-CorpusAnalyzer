@@ -1,11 +1,11 @@
 package texts;
 
 import debug.Logger;
+import utils.FileLoader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class FolgerCorpusTextLoader {
 
@@ -36,22 +36,9 @@ public class FolgerCorpusTextLoader {
 
     private static Text loadTextFromFile(File textFile) throws FileNotFoundException {
         Logger.debug("Loading text from file: " + textFile.getName());
-        String fileName = textFile.getName();
-        String title = fileName.substring(0, fileName.indexOf(FILE_NAME_TITLE_DELIMITER)).replaceAll("-", " ");
-        StringBuilder rawTextBuilder = new StringBuilder();
-        Scanner scanner = new Scanner(textFile);
-        boolean firstLineReached = false;
-        while (scanner.hasNext()) {
-            String currentLine = scanner.nextLine();
-            if (currentLine.equals("")) {
-                firstLineReached = true;
-                currentLine = scanner.next();
-            }
-            if (firstLineReached) {
-                rawTextBuilder.append(currentLine);
-            }
-        }
-        return new Text(title, fileName, rawTextBuilder.toString());
+        String title = textFile.getName().substring(0, textFile.getName().indexOf(FILE_NAME_TITLE_DELIMITER)).replaceAll("-", " ");
+        String content = FileLoader.loadFullTextFromFile(textFile);
+        return new Text(title, content);
     }
 
 }

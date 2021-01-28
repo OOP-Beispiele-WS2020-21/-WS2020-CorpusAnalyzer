@@ -4,11 +4,10 @@ import processor.filter.TextFilter;
 import texts.Text;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TextProcessor {
 
-    private ArrayList<TextFilter> filters;
+    private final ArrayList<TextFilter> filters;
 
     public TextProcessor() {
         filters = new ArrayList<>();
@@ -18,11 +17,12 @@ public class TextProcessor {
         filters.add(filter);
     }
 
-    public String[] getTokenFromText(Text text) {
-        String result = text.raw;
-        for(TextFilter filter: filters) {
-            result = filter.filter(result);
+    public Text filterText(Text text) {
+        Text filteredText = text;
+        for (TextFilter filter : filters) {
+            filteredText = filter.filter(filteredText);
         }
-        return result.split(" ");
+        return filteredText;
     }
+
 }

@@ -3,23 +3,30 @@ package texts;
 public class Type implements Comparable<Type> {
 
     public final String value;
-    private int inCorpusCount;
+    private int inCorpusFrequency;
+    private float relativeInCorpusFrequency;
 
     public Type(String value) {
         this.value = value;
-        this.inCorpusCount = 0;
+        this.inCorpusFrequency = 0;
+        this.relativeInCorpusFrequency = 0;
     }
 
-    public void increaseCount() {
-        this.inCorpusCount++;
+    public void increaseCount(int totalTokenCountForCorpus) {
+        this.inCorpusFrequency++;
+        this.relativeInCorpusFrequency = ((float) inCorpusFrequency / totalTokenCountForCorpus) * 100;
     }
 
-    public int getCount() {
-        return inCorpusCount;
+    public int getFrequency() {
+        return inCorpusFrequency;
+    }
+
+    public float getRelativeFrequency() {
+        return relativeInCorpusFrequency;
     }
 
     @Override
     public int compareTo(Type type) {
-        return this.inCorpusCount - type.getCount();
+        return this.inCorpusFrequency - type.getFrequency();
     }
 }

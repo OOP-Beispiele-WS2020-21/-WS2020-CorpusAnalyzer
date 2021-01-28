@@ -1,7 +1,9 @@
 package processor.filter;
 
+import texts.Text;
+
 public interface TextFilter {
 
-    String filter(String text);
+    Text filter(Text text);
 
 }

@@ -1,15 +1,15 @@
 package processor.filter;
 
-public class LowerCaseFilter implements TextFilter {
+public class WhiteSpaceFilter implements TextFilter {
 
     @Override
     public String filter(String text) {
-        return text.toLowerCase();
+        return text.trim().replaceAll(" +", " ");
     }
 
     @Override
     public String getFilterName() {
-        return "LowerCaseFilter";
+        return "WhiteSpaceFilter";
     }
 
 }

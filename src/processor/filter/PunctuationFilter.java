@@ -12,4 +12,9 @@ public class PunctuationFilter implements TextFilter {
         return filteredText;
     }
 
+    @Override
+    public String getFilterName() {
+        return "PunctuationFilter";
+    }
+
 }

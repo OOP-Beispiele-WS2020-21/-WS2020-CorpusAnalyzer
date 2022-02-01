@@ -1,5 +1,11 @@
 package texts;
 
+/**
+ * Diese Klasse repräsentiert eine einzelne Type innerhalb eines Korpus. Die Frequenz (Häufigkeit)
+ * wird dabei zu Beginn mit 0 initialisiert und kann über öffentliche Methoden schrittweise
+ * erhöht und auch ausgelesen werden. Zwei Typen können hinsichtlich der aktuellen Frequenz verglichen
+ * werden, wobei Typen mit höherer Auftretenshäufigkeit hinter solchen mit geringerer einsortiert werden.
+ */
 public class Type implements Comparable<Type> {
 
     public final String value;

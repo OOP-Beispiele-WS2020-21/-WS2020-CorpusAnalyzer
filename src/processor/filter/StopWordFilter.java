@@ -1,5 +1,9 @@
 package processor.filter;
 
+/**
+ * Textfilter für die Verarbeitung einzelner Texte: Entfernt alle im übergebenen Text auftretende
+ * Stopwörter. Die Liste der Stopwörter wird hier über ein String-Array direkt in der Klasse definiert.
+ */
 public class StopWordFilter implements TextFilter {
 
     // Stop words taken from: https://gist.github.com/sebleier/554280
